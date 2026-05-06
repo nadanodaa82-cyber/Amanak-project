@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة أمانك | AMANAK Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --main-purple: #5c4db1; 
+            --light-purple: #a74eb5;
+            --blue-gradient: linear-gradient(135deg, #25aae1 0%, #a74eb5 100%);
+            --soft-bg: #f8f9ff;
+            --text-dark: #2d2d5f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+        body { background-color: var(--soft-bg); color: var(--text-dark); scroll-behavior: smooth; overflow-x: hidden; }
+
+        /* Navigation */
+        header {
+            background: white; padding: 15px 8%; display: flex; justify-content: space-between;
+            align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 700; cursor: pointer; font-size: 14px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--main-purple); }
+        .auth-btns { display: flex; gap: 10px; }
+        .btn-login { border: 2px solid #25aae1; color: var(--text-dark); padding: 6px 18px; border-radius: 10px; font-weight: 700; background: none; cursor: pointer; }
+        .btn-signup { background: var(--main-purple); color: white; border: none; padding: 8px 18px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+
+        .container { max-width: 1150px; margin: 0 auto; padding: 20px; }
+
+        /* Pages System */
+        .page { display: none; animation: fadeIn 0.6s ease-out; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- تصميم الصفحة الرئيسية المطور --- */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            padding: 60px 0;
+            align-items: center;
+        }
+        .hero-text h1 { font-size: 45px; font-weight: 900; line-height: 1.3; color: #1a1a4b; }
+        .hero-text h1 span { color: var(--main-purple); background: var(--blue-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-text p { font-size: 19px; color: #555; margin: 20px 0 35px; line-height: 1.8; }
+        
+        .hero-btns { display: flex; gap: 15px; }
+        .btn-primary { background: var(--blue-gradient); color: white; padding: 15px 35px; border-radius: 15px; border: none; font-weight: 900; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(37, 170, 225, 0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37, 170, 225, 0.4); }
+        .btn-outline { background: white; border: 2px solid var(--main-purple); color: var(--main-purple); padding: 15px 35px; border-radius: 15px; font-weight: 900; cursor: pointer; transition: 0.3s; }
+        .btn-outline:hover { background: #f4f0ff; }
+
+        .hero-visual { position: relative; text-align: center; }
+        .main-circle { width: 300px; height: 300px; background: var(--blue-gradient); border-radius: 50%; display: inline-block; position: relative; }
+        .main-circle i { font-size: 150px; color: white; line-height: 300px; }
+        .float-tag { position: absolute; background: white; padding: 12px 20px; border-radius: 50px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); font-weight: 800; display: flex; align-items: center; gap: 8px; animation: floating 3s ease-in-out infinite; }
+        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        /* Features Cards */
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 50px; }
+        .f-card { background: white; padding: 35px 25px; border-radius: 30px; text-align: center; transition: 0.4s; border: 1px solid #f0f0f0; cursor: pointer; }
+        .f-card:hover { transform: translateY(-10px); border-color: var(--main-purple); box-shadow: 0 20px 40px rgba(92, 77, 177, 0.08); }
+        .f-icon { width: 70px; height: 70px; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 28px; }
+
+        /* --- بقية التنسيقات للصفحات الأخرى --- */
+        .card { background: white; border-radius: 25px; padding: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); margin-bottom: 30px; }
+        .form-group { text-align: right; margin-bottom: 15px; }
+        label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 14px; }
+        input, select { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #ddd; background: #fafafa; }
+        .submit-btn { width: 100%; padding: 15px; border-radius: 12px; border: none; background: var(--blue-gradient); color: white; font-weight: 900; cursor: pointer; }
+        
+        .chat-item { display: flex; align-items: center; gap: 15px; padding: 15px; background: #f9f9f9; border-radius: 15px; margin-bottom: 10px; }
+        footer { text-align: center; padding: 40px; color: #888; font-size: 13px; border-top: 1px solid #eee; margin-top: 50px; }
+
+        @media (max-width: 768px) {
+            .hero-section { grid-template-columns: 1fr; text-align: center; }
+            .hero-btns { justify-content: center; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="auth-btns">
+            <button class="btn-login" onclick="showPage('login-page')">دخول</button>
+            <button class="btn-signup" onclick="showPage('signup-page')">إنشاء حساب</button>
+        </div>
+        <nav class="nav-links">
+            <a onclick="showPage('home-page')">الرئيسية</a>
+            <a onclick="showPage('courses-page')">الدورات</a>
+            <a onclick="showPage('community-page')">المجتمع</a>
+            <a onclick="showPage('reports-page')">تقاريري</a>
+        </nav>
+        <div style="display:flex; align-items:center; gap:10px; cursor: pointer;" onclick="showPage('home-page')">
+            <span style="font-weight:900; color:var(--main-purple); font-size:24px;">أمانك</span>
+            <i class="fas fa-hand-holding-heart" style="color:var(--main-purple); font-size:26px;"></i>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div id="home-page" class="page active">
+            <section class="hero-section">
+                <div class="hero-text">
+                    <div style="color: var(--light-purple); font-weight: 900; margin-bottom: 10px;">👋 مرحباً بكِ في جامعة طيبة</div>
+                    <h1>رفيقكِ الذكي لـ <span>حياة جامعية</span> متزنة</h1>
+                    <p>منصة أمانكِ توفر لكِ الدعم النفسي والاجتماعي بخصوصية تامة. احجزي استشارتكِ، انضمي لزميلاتكِ، وطوري مهاراتكِ في مكان واحد.</p>
+                    <div class="hero-btns">
+                        <button class="btn-primary" onclick="showPage('signup-page')">ابدئي الآن مجاناً</button>
+                        <button class="btn-outline" onclick="showPage('community-page')">استكشفي المجتمع</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="main-circle">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="float-tag" style="top: 10%; right: -10%; color: #2ecc71;">
+                        <i class="fas fa-check-circle"></i> سرية تامة
+                    </div>
+                    <div class="float-tag" style="bottom: 15%; left: -10%; color: var(--main-purple); animation-delay: 1s;">
+                        <i class="fas fa-star"></i> أخصائيات معتمدات
+                    </div>
+                </div>
+            </section>
+
+            <div class="features-grid">
+                <div class="f-card" onclick="showPage('signup-page')">
+                    <div class="f-icon" style="background: #eef2ff; color: var(--main-purple);"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>حجز استشارة</h3>
+                    <p>احجزي موعدكِ مع الأخصائية المناسبة بكل سهولة وخصوصية.</p>
+                </div>
+                <div class="f-card" onclick="showPage('community-page')">
+                    <div class="f-icon" style="background: #fff0f6; color: #d63384;"><i class="fas fa-users"></i></div>
+                    <h3>مجتمع داعم</h3>
+                    <p>تحدثي مع زميلاتكِ في غرف دعم آمنة تحت إشراف مختصين.</p>
+                </div>
+                <div class="f-card" onclick="showPage('courses-page')">
+                    <div class="f-icon" style="background: #e6fffa; color: #00b894;"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>تطوير الذات</h3>
+                    <p>محتوى تعليمي ودورات مخصصة لمساعدتكِ في رحلتكِ الأكاديمية.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="login-page" class="page">
+            <div style="max-width: 400px; margin: 50px auto;" class="card">
+                <h2 style="text-align:center; margin-bottom:25px;">دخول الطالبة</h2>
+                <div class="form-group"><label>البريد الجامعي</label><input type="email"></div>
+                <div class="form-group"><label>كلمة المرور</label><input type="password"></div>
+                <button class="submit-btn" onclick="showPage('home-page')">دخول</button>
+            </div>
+        </div>
+
+        <div id="signup-page" class="page">
+            <div style="max-width: 450px; margin: 40px auto;" class="card">
+                <h2 style="text-align:center; margin-bottom:25px;">إنشاء حساب جديد</h2>
+                <div class="form-group"><label>الاسم الكامل</label><input type="text"></div>
+                <div class="form-group"><label>الرقم الجامعي</label><input type="number"></div>
+                <div class="form-group"><label>الكلية</label><input type="text"></div>
+                <button class="submit-btn" onclick="showPage('home-page')">تأكيد التسجيل</button>
+            </div>
+        </div>
+
+        <div id="courses-page" class="page">
+            <h2 style="margin-bottom:25px;">الدورات التدريبية المتاحة</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div class="card">
+                    <h3>إدارة ضغوط الاختبارات</h3>
+                    <p style="margin:10px 0; color:#666;">دورة مكثفة حول تقنيات الاسترخاء.</p>
+                    <button class="submit-btn" style="padding:10px;">سجلي الآن</button>
+                </div>
+                <div class="card">
+                    <h3>مهارات التواصل الفعال</h3>
+                    <p style="margin:10px 0; color:#666;">بناء علاقات اجتماعية ناجحة داخل الجامعة.</p>
+                    <button class="submit-btn" style="padding:10px;">سجلي الآن</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="community-page" class="page">
+            <h2 style="margin-bottom:25px;">غرف الدعم الجماعي</h2>
+            <div class="card">
+                <div class="chat-item">
+                    <div style="width:50px; height:50px; background:var(--blue-gradient); border-radius:50%;"></div>
+                    <div><h4>مجموعة: التفاؤل والنجاح</h4><small>12 طالبة نشطة حالياً</small></div>
+                </div>
+                <div class="chat-item">
+                    <div style="width:50px; height:50px; background:var(--light-purple); border-radius:50%;"></div>
+                    <div><h4>مجموعة: سنة أولى جامعة</h4><small>30 طالبة نشطة حالياً</small></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="reports-page" class="page">
+            <h2 style="margin-bottom:25px;">تقاريري النفسية</h2>
+            <div class="card" style="text-align:center;">
+                <i class="fas fa-file-invoice" style="font-size:50px; color:#ddd;"></i>
+                <p style="margin-top:20px; color:#888;">لا توجد تقارير حالياً، سيتم عرض تقاريركِ بعد أول جلسة.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>مشروع تخرج - منصة أمانك جامعة طيبة &copy; 2026</footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0,0);
+        }
+    </script>
+</body>
+</html>
