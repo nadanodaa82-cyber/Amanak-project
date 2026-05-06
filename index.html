@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة أمانك - لوحة التحكم</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+
+    <nav class="bg-white shadow-md p-4 mb-8">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <div class="bg-blue-600 text-white p-2 rounded-lg font-bold">AMANAK</div>
+                <h1 class="text-xl font-bold text-gray-800">منصة أمانك النفسية</h1>
+            </div>
+            <div class="text-gray-600">أهلاً بك، مستخدم جديد 👋</div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 pb-12">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold text-blue-900">ماذا تريد أن تفعل اليوم؟</h2>
+            <p class="text-gray-600 mt-2">اختر أحد المسارات المتاحة لبدء رحلتك نحو الصحة النفسية</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:scale-105 transition-transform duration-300 border-b-8 border-blue-500">
+                <div class="p-8 text-center">
+                    <div class="text-5xl mb-4">👨‍⚕️</div>
+                    <h3 class="text-xl font-bold mb-2">طلب استشارة</h3>
+                    <p class="text-gray-500 text-sm mb-6">احجز موعداً مع مرشد مختص (نفسي، اجتماعي، تربوي) في جلسة آمنة.</p>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700">ابدأ المسار</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:scale-105 transition-transform duration-300 border-b-8 border-green-500">
+                <div class="p-8 text-center">
+                    <div class="text-5xl mb-4">📝</div>
+                    <h3 class="text-xl font-bold mb-2">اختبارات نفسية</h3>
+                    <p class="text-gray-500 text-sm mb-6">أجرِ اختبارات (القلق، الاكتئاب، تقدير الذات) واحصل على تحليل فوري.</p>
+                    <button class="w-full bg-green-600 text-white py-3 rounded-xl font-bold hover:bg-green-700">ابدأ الاختبار</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:scale-105 transition-transform duration-300 border-b-8 border-purple-500">
+                <div class="p-8 text-center">
+                    <div class="text-5xl mb-4">📖</div>
+                    <h3 class="text-xl font-bold mb-2">تطوير ذاتي</h3>
+                    <p class="text-gray-500 text-sm mb-6">تصفح المقالات، الفيديوهات التوعوية، وانضم لغرف الفضفضة الجماعية.</p>
+                    <button class="w-full bg-purple-600 text-white py-3 rounded-xl font-bold hover:bg-purple-700">استكشف المحتوى</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-16 bg-white rounded-3xl p-8 shadow-2xl flex flex-col md:flex-row items-center justify-between border-2 border-dashed border-blue-300">
+            <div class="mb-6 md:mb-0 text-right">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">تجميع البيانات والتقرير النهائي 📊</h3>
+                <p class="text-gray-600 max-w-xl">بناءً على نشاطك في المسارات السابقة (الجلسات، الاختبارات، والمشاهدات)، سنقوم بتوليد تقرير شامل لحالتك مع توصيات مخصصة.</p>
+            </div>
+            <button class="bg-yellow-500 text-blue-900 px-10 py-4 rounded-2xl font-black text-lg hover:bg-yellow-400 shadow-lg animate-bounce">
+                عرض تقريري الآن
+            </button>
+        </div>
+    </div>
+
+    <footer class="text-center py-8 text-gray-500 border-t border-gray-200 bg-white mt-12">
+        <p>© 2024 منصة أمانك - مشروع تخرج - جميع الحقوق محفوظة</p>
+    </footer>
+
+</body>
+</html>
