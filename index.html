@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة أمانك | AMANAK Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --main-purple: #5c4db1; 
+            --light-purple: #a74eb5;
+            --blue-gradient: linear-gradient(135deg, #25aae1 0%, #a74eb5 100%);
+            --soft-bg: #f8f9ff;
+            --text-dark: #2d2d5f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+        body { background-color: var(--soft-bg); color: var(--text-dark); scroll-behavior: smooth; }
+
+        /* Navigation */
+        header {
+            background: white; padding: 15px 8%; display: flex; justify-content: space-between;
+            align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .nav-links a:hover { color: var(--main-purple); }
+        .login-btn { border: 2px solid #25aae1; color: var(--text-dark); padding: 8px 25px; border-radius: 12px; font-weight: 900; background: none; cursor: pointer; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+        /* Hero Section */
+        .hero { text-align: center; padding: 60px 20px; }
+        .logo-icon { font-size: 70px; background: var(--blue-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        
+        /* Layout Grid */
+        .main-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 20px; }
+
+        /* Cards Style */
+        .card { background: white; border-radius: 25px; padding: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); margin-bottom: 30px; border: 1px solid #eee; }
+        .section-title { font-size: 20px; font-weight: 900; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; border-right: 4px solid var(--main-purple); padding-right: 15px; }
+
+        /* Form Elements */
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 14px; }
+        select, input, textarea { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #ddd; background: #fafafa; font-size: 14px; }
+
+        .btn-primary { 
+            width: 100%; background: var(--blue-gradient); color: white; border: none; 
+            padding: 15px; border-radius: 12px; font-weight: 900; cursor: pointer; transition: 0.3s;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37, 170, 225, 0.4); }
+
+        /* Quiz Styles */
+        .quiz-box { background: #fdf0ff; border: 2px dashed var(--light-purple); }
+        .progress-bar { height: 10px; background: #eee; border-radius: 5px; margin: 15px 0; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--light-purple); width: 0%; transition: 0.5s; }
+
+        /* Chat Rooms */
+        .chat-room { display: flex; align-items: center; justify-content: space-between; padding: 15px; border-bottom: 1px solid #eee; }
+        .status-dot { width: 10px; height: 10px; background: #2ecc71; border-radius: 50%; display: inline-block; }
+
+        /* Report Sidebar */
+        .sidebar-card { background: var(--main-purple); color: white; }
+        .stat-item { background: rgba(255,255,255,0.1); padding: 15px; border-radius: 15px; margin-top: 10px; }
+
+        .hidden { display: none; }
+        footer { text-align: center; padding: 40px; color: #888; font-size: 13px; }
+
+        /* SOS Button */
+        .sos-btn {
+            position: fixed; bottom: 30px; left: 30px; background: #ff4757; color: white;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; font-weight: bold; box-shadow: 0 10px 20px rgba(255,71,87,0.3);
+            cursor: pointer; z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <button class="login-btn">تسجيل دخول</button>
+        <nav class="nav-links">
+            <a onclick="showPage('home-page')">الرئيسية</a>
+            <a onclick="showPage('reports-page')">تقاريري</a>
+            <a href="#">الدورات</a>
+            <a href="#">المجتمع</a>
+        </nav>
+        <div style="display:flex; align-items:center; gap:10px;">
+            <span style="font-weight:900; color:var(--main-purple); font-size:22px;">أمانك</span>
+            <i class="fas fa-hand-holding-heart" style="color:var(--main-purple); font-size:24px;"></i>
+        </div>
+    </header>
+
+    <div class="sos-btn" onclick="alert('سيتم تحويلك لخط المساعدة العاجل بجامعة طيبة')">SOS</div>
+
+    <main class="container">
+        <div id="home-page" class="page">
+            <section class="hero">
+                <div class="logo-icon"><i class="fas fa-brain"></i></div>
+                <h1 style="font-size: 32px; font-weight: 900;">مرحباً بكِ في رحلة التغيير</h1>
+                <p style="color: #666; margin-top: 10px;">منصة "أمانك" هي مساحتك الخاصة للنمو النفسي والاجتماعي</p>
+            </section>
+
+            <div class="main-grid">
+                <div class="content-area">
+                    <div class="card">
+                        <span class="section-title"><i class="fas fa-calendar-check"></i> طلب استشارة جديدة</span>
+                        <div class="form-group">
+                            <label>نوع الاستشارة</label>
+                            <select id="cons-type">
+                                <option>نفسية - Psychological</option>
+                                <option>اجتماعية - Social</option>
+                                <option>تربوية - Educational</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>تحديد الموعد</label>
+                            <input type="datetime-local">
+                        </div>
+                        <button class="btn-primary" onclick="confirmAction('تم حجز موعدكِ بنجاح، سيظهر في لوحة التقارير')">حجز موعد</button>
+                    </div>
+
+                    <div class="card quiz-box" id="quiz-container">
+                        <span class="section-title"><i class="fas fa-clipboard-list"></i> مقياس التوتر السريع</span>
+                        <div id="quiz-content">
+                            <p id="question-text" style="font-weight: bold; margin-bottom: 15px;">هل تشعرين بضغط دراسي زائد هذا الأسبوع؟</p>
+                            <div class="progress-bar"><div class="progress-fill" id="quiz-progress"></div></div>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn-primary" style="background: #a74eb5;" onclick="nextQuestion(5)">نعم كثيراً</button>
+                                <button class="btn-primary" style="background: #ccc;" onclick="nextQuestion(1)">نادراً</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="card sidebar-card">
+                        <h3>ملخص حالتي</h3>
+                        <div class="stat-item">
+                            <small>مستوى الاستقرار</small>
+                            <p style="font-size: 20px; font-weight: 900;">85%</p>
+                        </div>
+                        <div class="stat-item">
+                            <small>الجلسات المتبقية</small>
+                            <p style="font-size: 20px; font-weight: 900;">2 جلسة</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <span class="section-title"><i class="fas fa-comments"></i> غرف دردشة آمنة</span>
+                        <div class="chat-room">
+                            <div>
+                                <strong>تجاوز القلق</strong><br>
+                                <small><span class="status-dot"></span> 14 طالبة الآن</small>
+                            </div>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="chat-room">
+                            <div>
+                                <strong>مهارات الاستذكار</strong><br>
+                                <small><span class="status-dot"></span> 8 طالبات الآن</small>
+                            </div>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="reports-page" class="page hidden">
+            <div class="card">
+                <span class="section-title"><i class="fas fa-file-medical-alt"></i> التقرير النهائي للحالة</span>
+                <p style="margin-bottom: 20px;">بناءً على نشاطكِ في المنصة، هذا هو تحليلكِ النفسي:</p>
+                
+                <table style="width: 100%; border-collapse: collapse; text-align: right;">
+                    <tr style="border-bottom: 2px solid #eee;">
+                        <th style="padding: 10px;">النشاط</th>
+                        <th style="padding: 10px;">التاريخ</th>
+                        <th style="padding: 10px;">الحالة</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">اختبار مقياس القلق</td>
+                        <td style="padding: 10px;">05 مايو 2026</td>
+                        <td style="color: green;">مكتمل (مستقر)</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">استشارة اجتماعية</td>
+                        <td style="padding: 10px;">02 مايو 2026</td>
+                        <td style="color: blue;">مؤرشفة</td>
+                    </tr>
+                </table>
+
+                <div style="background: #f0f7ff; padding: 20px; border-radius: 15px; margin-top: 25px;">
+                    <h4 style="color: var(--main-purple);">توصية أمانك الذكية:</h4>
+                    <p>أنتِ تبذلين جهداً رائعاً! ننصحكِ بالمشاركة في دورة "إدارة الوقت" لتقليل ضغط الامتحانات.</p>
+                </div>
+                <button class="btn-primary" style="margin-top: 20px; width: auto;" onclick="showPage('home-page')">العودة للرئيسية</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>مشروع تخرج - منصة أمانك لجامعة طيبة &copy; 2026</footer>
+
+    <script>
+        // التنقل بين الصفحات
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        // نظام الكويز البسيط
+        let currentStep = 0;
+        const questions = [
+            "هل تشعرين بصعوبة في التركيز أثناء المحاضرات؟",
+            "هل تمارسين أي نشاط ترفيهي خلال يومكِ؟",
+            "هل تشعرين بالدعم من زميلاتكِ في القسم؟"
+        ];
+
+        function nextQuestion(score) {
+            currentStep++;
+            let progress = (currentStep / questions.length) * 100;
+            document.getElementById('quiz-progress').style.width = progress + "%";
+
+            if (currentStep < questions.length) {
+                document.getElementById('question-text').innerText = questions[currentStep];
+            } else {
+                document.getElementById('quiz-content').innerHTML = `
+                    <div style="text-align:center; padding:20px;">
+                        <i class="fas fa-check-circle" style="font-size:40px; color:#2ecc71;"></i>
+                        <h4 style="margin-top:10px;">تم تحليل إجاباتكِ!</h4>
+                        <p>نتيجتكِ تشير إلى توازن جيد. التقرير التفصيلي متاح في صفحة التقارير.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function confirmAction(msg) {
+            alert(msg);
+        }
+    </script>
+</body>
+</html>
